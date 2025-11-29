@@ -1,0 +1,20 @@
+{
+  "id": "5468755",
+  "url": "https://www.fl.ru/projects/5468755/nastroit-rabotu-http-biblioteki-na-nodejs.html",
+  "pageTitle": "Настроить работу HTTP-библиотеки на node.js: проект в категории Встраиваемые системы, 09.11.2025 в 17:53",
+  "title": "Настроить работу HTTP-библиотеки на node.js",
+  "verified": "Нет",
+  "registration": "3 года и 9 месяцев",
+  "budget": "123.11",
+  "reviews": "+ 0 - 0",
+  "sections": "Программирование / Встраиваемые системы",
+  "publishedDate": "09.11.2025 | 17:53 [поднят: 09.11.2025 | 17:53]",
+  "parsedAt": "2025-11-10T17:24:22.234Z",
+  "description": "Есть ПО написанное на node.js.  Изначально работало на библиотеке cycleTLS (github.com/Danny-Dasilva/..., но она оказалась глючной и вызывала ошибки при выполнении запросов. Решили заменить на библиотеку azureTLS (github.com/Noooste/azuret... Поставили, но не все работает корректно, не все запросы проходят. Нужно разобраться в чем проблема и исправить, чтобы ПО работало без ошибок",
+  "links": [
+    "https://www.fl.ru/away/?href=https%3A%2F%2Fgithub.com%2FDanny-Dasilva%2FCycleTLS%29",
+    "https://www.fl.ru/away/?href=https%3A%2F%2Fgithub.com%2FNoooste%2Fazuretls-client%2Ftree%2Fmain%29"
+  ],
+  "fileUrls": [],
+  "fileNames": []
+}

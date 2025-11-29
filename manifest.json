@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "FL.ru Project Parser & Uploader",
+  "version": "1.0.0",
+  "description": "Парсит полную информацию о проекте FL.ru и отправляет на сервер вместе с вложениями",
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "scripting",
+    "storage",
+    "notifications",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "https://*.fl.ru/*",
+    "http://localhost/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "action": {
+    "default_title": "FL.ru Parser & Uploader"
+  }
+}

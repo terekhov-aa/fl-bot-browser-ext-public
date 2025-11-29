@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Grundfos SQ 1-35 — страница товара</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+<style>
+/* ===== Тема и палитра ===== */
+:root{
+  --bg:#ffffff;
+  --bg-grad: radial-gradient(1200px 600px at 10% -10%, #eef2ff 0%, transparent 40%),
+             radial-gradient(1000px 520px at 90% -20%, #f0f9ff 0%, transparent 45%),
+             linear-gradient(#ffffff, #f8fafc);
+  --text:#0f172a;--muted:#64748b;--border:#e5e7eb;
+  --accent:#2563eb;--accent-2:#14b8a6;--danger:#ef4444;
+  --price:#0b0b0e;--shadow:0 12px 28px rgba(15,23,42,.10);--radius:14px;
+  --panel:#ffffff;--panel2:#f8fafc;
+  /* график */
+  --card:#fff;--grid:#e2e8f0;
+  --blue:#1e3a8a;--green:#10b981;--violet:#7c3aed;
+  --load-green:#22c55e;--load-yellow:#eab308;--load-red:#ef4444;
+}
+
+/* ===== Светлая тема ===== */
+.light {
+  --bg: #f8fafc;
+  --bg-grad: radial-gradient(1400px 800px at 10% -10%, #e0f2fe 0%, transparent 45%),
+              linear-gradient(180deg, #f8fafc, #f1f5f9);
+  --text: #1e293b;
+  --muted: #475569;
+  --border: #e2e8f0;
+  --accent: #2563eb;
+  --accent-2: #22d3ee;
+  --danger: #ef4444;
+  --price: #0f172a;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  --panel: #ffffff;
+  --panel2: #f9fafb;
+  --card: #ffffff;
+  --grid: #e2e8f0;
+  --blue: #2563eb;
+  --green: #16a34a;
+  --violet: #7c3aed;
+}
+
+/* ===== Премиальная тёмная тема (≈60% затемнение) ===== */
+.dark {
+  --bg: #1a2233;
+  --bg-grad: radial-gradient(1200px 600px at 20% -10%, #1f293b 0%, transparent 45%),
+             radial-gradient(900px 500px at 80% -15%, #24324a 0%, transparent 45%),
+             linear-gradient(180deg, #1b2435, #0f172a);
+  --text: #e9edf3;
+  --muted: #a2aabc;
+  --border: #2c3648;
+  --accent: #5ea0ff;
+  --accent-2: #22d3ee;
+  --danger: #ef4444;
+  --price: #ffffff;
+  --shadow: 0 16px 40px rgba(0,0,0,0.4), inset 0 0 20px rgba(255,255,255,0.04);
+  --panel: #222c40;
+  --panel2: #1c2436;
+  --card: #273248;
+  --grid: #334155;
+  --blue: #60a5fa;
+  --green: #34d399;
+  --violet: #a78bfa;
+}
+
+/* ===== Светлые кнопки и подсвеченные блоки в тёмной теме ===== */
+.dark .btn.primary {
+  background: linear-gradient(145deg, #60a5fa, #3b82f6);
+  color: #ffffff;
+  border: 1px solid #93c5fd;
+  box-shadow: 0 6px 20px rgba(96,165,250,.25);
+  transition: all .25s ease;
+}
+.dark .btn.primary:hover { filter:brightness(1.15); box-shadow:0 8px 26px rgba(96,165,250,.35); }
+
+.dark .btn.ghost,
+.dark .qty button,
+.dark .g-nav {
+  background: rgba(255,255,255,0.12);
+  color: #f1f5f9;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all .25s ease;
+}
+.dark .btn.ghost:hover,
+.dark .qty button:hover,
+.dark .g-nav:hover { background:rgba(255,255,255,0.2); color:#fff; }
+
+.dark .card,
+.dark .panel,
+.dark .calc-premium {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35), inset 0 0 15px rgba(255,255,255,0.03);
+  border-radius: 16px;
+}
+
+.dark .thumb.active { border-color:#5ea0ff; box-shadow:0 0 10px rgba(96,165,250,.4); }
+.dark .sticker { background:#f8fafc; color:#b91c1c; border:1px solid #fecaca; }
+
+.dark .btn.tab.active { background:#5ea0ff; color:#fff; border-color:#93c5fd; }
+.dark .btn.tab { background:rgba(255,255,255,.08); color:#e2e8f0; border-color:#3b475a; }
+
+/* Подсветка ссылки "10 отзывов" в тёмной теме */
+.dark #ratingValue a {
+  color: #5ea0ff;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(94,160,255,0.4);
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+.dark #ratingValue a:hover {
+  color: #93c5fd;
+  border-color: rgba(147,197,253,0.8);
+}
+
+.dark input,.dark select,.dark textarea {
+  background:#1e293b; border:1px solid #2f3e54; color:#f1f5f9; border-radius:8px; transition:all .25s ease;
+}
+.dark input:focus,.dark select:focus,.dark textarea:focus {
+  border-color:#5ea0ff; box-shadow:0 0 0 3px rgba(96,165,250,.25);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--text);
+  background: var(--bg-grad);
+  line-height:1.5
+}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+header.container, main.container, footer.container{position:relative}
+
+/* ===== Top ===== */
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.theme-btn{border:1px solid var(--border);background:var(--panel2);color:var(--text);padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:600}
+.brand{font-weight:700;color:var(--text)}
+
+/* ===== Info cards ===== */
+.info{display:grid;gap:12px;margin-bottom:14px}
+.info-card{border:2px solid #94a3b8;border-radius:12px;padding:10px 14px;background:var(--panel);box-shadow:var(--shadow);font-size:.92rem}
+.info-card.free{border-color:#ef4444}
+.info-card h3{margin:0 0 4px;font-size:.98rem}
+.info-card p{margin:.2rem 0}
+.info-card .lead{font-weight:600}
+
+/* ===== Product layout ===== */
+.product{
+  display:grid;grid-template-columns:1.06fr 1fr;gap:28px;margin-top:12px;
+  padding:10px;background:var(--panel);border:1px solid var(--border);border-radius:18px;
+  box-shadow:0 24px 60px rgba(37,99,235,.08), 0 10px 28px rgba(2,6,23,.06);
+}
+
+/* ===== Gallery ===== */
+.gallery{position:relative;background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:14px;text-align:center;overflow:hidden}
+.sticker{position:absolute;top:12px;left:12px;background:var(--danger);color:#fff;font-weight:800;padding:6px 12px;border-radius:10px;font-size:.9rem;box-shadow:0 6px 16px rgba(0,0,0,.22);z-index:10}
+.gallery img#mainImg{max-width:100%;max-height:420px;object-fit:contain;user-select:none;border-radius:12px;transition:transform .35s ease;will-change:transform}
+.gallery:hover img#mainImg{transform:scale(1.02)}
+.g-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border:1px solid var(--border);background:var(--panel);border-radius:50%;box-shadow:var(--shadow);cursor:pointer;display:flex;align-items:center;justify-content:center;user-select:none;z-index:6}
+.g-prev{left:10px}.g-next{right:10px}
+.thumbs-wrap{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}
+.thumb{width:82px;height:64px;border:2px solid transparent;border-radius:10px;overflow:hidden;cursor:pointer;opacity:.84;transition:.2s;background:var(--panel)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb.active{border-color:var(--accent);opacity:1}
+
+/* ===== Chart block ===== */
+.hydro{margin-top:16px;background:var(--card);border:1px solid var(--grid);border-radius:16px;box-shadow:0 18px 40px rgba(2,6,23,.08);padding:12px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:8px}
+.btn{border:none;border-radius:12px;padding:8px 12px;cursor:pointer;font-size:.92rem;transition:.2s;background:var(--blue);color:#fff}
+.btn.ghost{background:transparent;border:1px solid var(--grid);color:var(--text)}
+.btn.tab{background:transparent;border:1px solid var(--grid);color:var(--text)}
+.btn.tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.card{background:var(--card);border:1px solid var(--grid);border-radius:14px;box-shadow:0 6px 28px rgba(2,6,23,.06);overflow:hidden;margin-bottom:12px;position:relative}
+.plot{padding:12px;position:relative}
+.plot canvas{width:100%;height:auto;aspect-ratio:16/9}
+.tooltip{position:absolute;min-width:230px;max-width:280px;padding:10px 12px;background:var(--blue);color:#fff;border-radius:10px;border:1px solid rgba(255,255,255,.14);box-shadow:0 12px 28px rgba(30,58,138,.35);pointer-events:none;font-size:.88rem;line-height:1.4;opacity:0;transform:scale(.9);transition:opacity .25s ease,transform .25s ease;z-index:1000}
+.tooltip.visible{opacity:1;transform:scale(1)}
+.tooltip strong{display:block;font-weight:800;margin-bottom:6px}
+.loadbar{margin-top:6px;height:10px;width:100%;border-radius:6px;overflow:hidden;background:#1e293b;position:relative}
+.loadbar>i{display:block;height:100%;width:0;position:absolute;left:0;top:0;background:linear-gradient(90deg,var(--load-green),var(--load-yellow),var(--load-red))}
+.bepLabel {
+  position: absolute;
+  color: var(--green);
+  font-weight: 500;
+  font-size: 0.68rem;
+  text-align: center;
+  line-height: 1.1;
+  transform: translate(-50%, 12px);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+  z-index: 12;
+  pointer-events: none;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  white-space: pre-line;
+}
+.bepLabel.hidden{opacity:0;}
+.hud{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:10px;border:1px solid var(--grid);border-radius:12px;background:var(--panel);box-shadow:0 6px 20px rgba(2,6,23,.06)}
+.hud .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--grid);border-radius:999px;background:rgba(255,255,255,.7);backdrop-filter:blur(3px);font-size:.9rem}
+.dark .hud .chip{background:rgba(0,0,0,.25)}
+
+/* ===== Свечение линий графика в тёмной теме ===== */
+.dark .chart-line-h {
+  stroke: #60a5fa !important;
+  filter: drop-shadow(0 0 6px rgba(96,165,250,0.6)) drop-shadow(0 0 12px rgba(96,165,250,0.4));
+}
+.dark .chart-line-p2 {
+  stroke: #22d3ee !important;
+  filter: drop-shadow(0 0 6px rgba(34,211,238,0.5)) drop-shadow(0 0 10px rgba(34,211,238,0.3));
+}
+.dark .chart-line-eta {
+  stroke: #a78bfa !important;
+  filter: drop-shadow(0 0 6px rgba(167,139,250,0.5)) drop-shadow(0 0 10px rgba(167,139,250,0.3));
+}
+
+/* ===== Details ===== */
+.details{padding-right:10px}
+.details h1{margin:0 0 4px;font-size:1.8rem}
+.sku{margin:0 0 10px;color:var(--muted)}
+.price{font-size:2.1rem;font-weight:800;color:var(--price);margin:6px 0}
+.rating{display:flex;align-items:center;gap:10px;margin:4px 0 10px}
+.stars{color:#fbbf24;cursor:pointer;display:flex;gap:2px;font-size:1.28rem;user-select:none}
+.stars span{cursor:pointer;transition:opacity .12s}
+.stars.always-yellow span{color:#fbbf24}
+.shortdesc{color:var(--muted);margin:6px 0 10px}
+.keylist{margin:8px 0 12px;padding-left:18px}
+.keylist li{margin:4px 0}
+
+/* ===== Qty & Buttons ===== */
+.qty{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:12px 0 16px}
+.qty button{background:var(--panel2);border:0;width:42px;height:42px;font-size:18px;cursor:pointer;color:var(--text);transition:transform .12s ease, box-shadow .2s ease;border-radius:10px}
+.qty button:active{transform:scale(0.96)}
+.qty input{width:70px;height:42px;border:0;text-align:center;font-size:1rem;outline:none;-moz-appearance:textfield;background:var(--panel);color:var(--text)}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.btn.primary{border:1px solid transparent;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;background:var(--accent);color:#fff;box-shadow:0 8px 22px rgba(37,99,235,.18);transition:.15s}
+.btn.primary:hover{filter:brightness(0.97)}
+
+/* ===== Tabs ===== */
+.tabs{margin-top:24px}
+.tab-head{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.tab-head button{border:1px solid var(--border);background:var(--panel2);color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600}
+.tab-head button.active{background:var(--accent);color:#fff;border-color:transparent}
+
+/* Основной контейнер вкладок (по умолчанию — панель) */
+.tab-body{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  padding:18px;
+}
+
+/* Для вкладки "Подбор насоса" убираем двойное обрамление */
+.tab-body.minimal{
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  padding:0;
+}
+
+/* ===== Specs ===== */
+.spec-table{width:100%;border-collapse:collapse}
+.spec-table th,.spec-table td{padding:14px 10px;border-bottom:1px solid var(--border);text-align:left}
+.spec-table th{color:var(--text);font-weight:700;width:42%}
+.spec-table tr:last-child td,.spec-table tr:last-child th{border-bottom:0}
+
+/* ===== Reviews ===== */
+.review-section{margin-top:16px}
+.review-card{display:flex;align-items:flex-start;gap:10px;margin:12px 0;opacity:0;transform:translateY(6px);animation:fadeIn .5s ease forwards}
+.review-avatar{width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 2px #fff, 0 6px 16px rgba(37,99,235,.25)}
+.review-bubble{background:var(--panel2);padding:10px 14px;border-radius:12px;max-width:820px;color:var(--text)}
+.review-stars{color:#fbbf24;font-size:.98rem;margin-bottom:4px}
+.review-form{margin-top:18px;border:1px solid var(--border);padding:16px;border-radius:12px;background:var(--panel2)}
+.review-form h4{margin-top:0}
+.review-form textarea{width:100%;min-height:90px;border:1px solid var(--border);border-radius:10px;padding:10px;resize:vertical;font-family:inherit;background:var(--panel);color:var(--text)}
+.review-form .form-row{margin:12px 0}
+.review-form button{margin-top:8px}
+@keyframes fadeIn{to{opacity:1;transform:none}}
+
+/* ===== Премиальный калькулятор ===== */
+.calc-premium {
+  max-width:100%;
+  margin:0;
+  padding:24px;
+  border-radius:16px;
+  background:var(--panel);
+  box-shadow:0 12px 28px rgba(15,23,42,.08);
+  border:1px solid var(--border);
+  transition:all .3s ease;
+}
+.calc-premium:hover { box-shadow:0 16px 36px rgba(37,99,235,.14); }
+.calc-form-premium { display:flex; flex-direction:column; gap:20px; }
+.calc-form-premium .row { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.calc-form-premium label { display:flex; flex-direction:column; font-size:.95rem; color:var(--text); font-weight:500; }
+.calc-form-premium select,
+.calc-form-premium input{
+  border:1px solid var(--border); border-radius:10px; padding:10px 12px; font-size:1rem;
+  background:var(--panel2); color:var(--text); transition:border-color .25s ease, box-shadow .25s ease;
+}
+.calc-form-premium input:focus,.calc-form-premium select:focus{ outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(59,130,246,.25); }
+.calc-form-premium .note{
+  background:rgba(59,130,246,.06); color:var(--muted); font-size:.9rem;
+  border-left:3px solid var(--accent); border-radius:8px; padding:10px 14px;
+}
+.calc-form-premium .actions{ display:flex; align-items:center; gap:14px; margin-top:10px; }
+.calc-form-premium .result{ font-weight:700; font-size:1rem; color:var(--accent); }
+
+/* ===== Альтернативы ===== */
+.alt{margin-top:26px}
+.alt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.alt-card{background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:0 18px 38px rgba(2,6,23,.12);padding:16px;display:flex;flex-direction:column;gap:8px;transition:transform .18s ease, box-shadow .18s ease}
+.alt-card:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 22px 44px rgba(2,6,23,.16)}
+.alt-card img{width:100%;height:140px;object-fit:contain}
+.alt-card .p{font-weight:800;font-size:1.1rem;color:var(--price)}
+.alt-card ul{margin:4px 0 6px 18px}
+.alt-card li{margin:3px 0;color:var(--text)}
+.alt-card .btn{align-self:flex-start}
+
+/* ===== Modals ===== */
+.modal{position:fixed;inset:0;background:rgba(2,6,23,.45);display:none;align-items:center;justify-content:center;z-index:80;padding:20px}
+.modal.show{display:flex}
+.modal .box{width:520px;max-width:96vw;background:var(--panel);border-radius:16px;padding:18px;border:1px solid var(--border);box-shadow:0 30px 60px rgba(2,6,23,.2);color:var(--text)}
+.modal .row{display:flex;gap:10px;justify-content:flex-end}
+.btn.secondary{background:#eef2ff;color:var(--accent);border-color:#c7d2fe;box-shadow:none}
+
+/* ===== Photo modal ===== */
+.modal-photo{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:200}
+.modal-photo img{max-width:90%;max-height:80%}
+.modal-photo .counter{color:#fff;margin:10px 0 0}
+.modal-photo .nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:#fff;cursor:pointer;user-select:none}
+.modal-photo .prev{left:20px}.modal-photo .next{right:20px}
+.modal-photo .close{position:absolute;top:18px;right:22px;font-size:32px;color:#fff;cursor:pointer}
+
+/* ===== Footer ===== */
+footer{margin:44px 0 12px;color:var(--muted);text-align:center;font-size:.9rem;max-width:980px;margin-inline:auto}
+
+/* ===== Hover-премиум ===== */
+.card:hover,.calc-premium:hover,.alt-card:hover,.gallery:hover,.btn.primary:hover {
+  transition: all .3s ease;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(94,160,255,.18), 0 0 14px rgba(94,160,255,.10);
+}
+.dark .card:hover,.dark .calc-premium:hover,.dark .alt-card:hover,.dark .gallery:hover,.dark .btn.primary:hover {
+  box-shadow: 0 8px 28px rgba(255,255,255,.08), 0 0 18px rgba(94,160,255,.28);
+}
+
+/* ===== Responsive ===== */
+@media (max-width:980px){
+  .product{grid-template-columns:1fr}
+  .calc-form-premium .row{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .alt-grid{grid-template-columns:1fr}
+}
+
+/* ===== Tooltip: пульсирующий зелёный кружок перед заголовком ===== */
+.tooltip strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  position: relative;
+}
+.tooltip .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulseDot 1.4s infinite ease-in-out;
+  box-shadow: 0 0 6px rgba(34,197,94,0.8);
+}
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.5; }
+}
+
+</style>
+</head>
+<body>
+  <div class="container topbar">
+    <div class="brand">Интернет-магазин насосного оборудования</div>
+    <button id="themeToggle" class="theme-btn">Смена темы</button>
+  </div>
+
+  <header class="container info">
+    <section class="info-card">
+      <h3>ℹ️ <b>Обращаем ваше внимание:</b></h3>
+      <p>Из-за колебаний валютного курса цены на сайте могут незначительно отличаться от прайс-листа.</p>
+      <p class="lead">Пожалуйста, уточняйте актуальную стоимость у наших менеджеров.</p>
+    </section>
+    <section class="info-card free">
+      <h3>🚚 <b>БЕСПЛАТНАЯ ДОСТАВКА ДО ОБЪЕКТА!</b></h3>
+      <p>Закажите монтаж у наших специалистов — и мы привезём оборудование бесплатно.</p>
+    </section>
+  </header>
+
+  <main class="container">
+    <!-- ТОВАР -->
+    <section class="product">
+      <div>
+        <!-- Галерея -->
+        <div class="gallery" id="gallery">
+          <div class="sticker">ХИТ ПРОДАЖ!</div>
+          <button class="g-nav g-prev" id="gPrev" aria-label="Предыдущее фото">❮</button>
+          <button class="g-nav g-next" id="gNext" aria-label="Следующее фото">❯</button>
+          <img src="GRUNDFOS.jpeg" alt="Grundfos SQ 1-35" id="mainImg">
+        </div>
+        <!-- Миниатюры -->
+        <div class="thumbs-wrap" id="thumbRow">
+          <div class="thumb active"><img src="GRUNDFOS.jpeg" alt="Фото 1"></div>
+          <div class="thumb"><img src="GRUNDFOS(2).jpg" alt="Фото 2"></div>
+        </div>
+
+        <!-- График -->
+        <div class="hydro" id="hydroWrap">
+          <div class="controls">
+            <button id="btn50" class="btn tab active">50 Гц</button>
+            <button id="btn60" class="btn tab">60 Гц</button>
+            <button id="unitBtn" class="btn ghost">единицы: м³/ч</button>
+            <button id="resetBtn" class="btn ghost">сбросить</button>
+            <!-- КНОПКУ "на весь экран" УБРАЛИ -->
+          </div>
+          <section class="card" id="cardTop"><div class="plot"><canvas id="chartTop"></canvas></div></section>
+          <section class="card" id="cardBottom"><div class="plot"><canvas id="chartBottom"></canvas></div></section>
+          <div class="hud" id="hud"></div>
+        </div>
+      </div>
+
+      <!-- Детали -->
+      <div class="details">
+        <h1>Grundfos SQ 1-35</h1>
+        <p class="sku">Артикул: <b>96510178</b></p>
+        <div class="price">73 000 ₽</div>
+
+        <div class="rating">
+          <div class="stars always-yellow" id="starContainer" aria-label="Рейтинг товара">
+            <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+          </div>
+          <span id="ratingValue"><b>5.0</b> • <a id="gotoReviews" href="#reviews">10 отзывов</a></span>
+        </div>
+
+        <p class="shortdesc">Надёжный скважинный насос 3″ для стабильного автономного водоснабжения частного дома и участка.</p>
+
+        <ul class="keylist">
+          <li><b>Подача:</b> 1 м³/ч (≈ 16,7 л/мин)</li>
+          <li><b>Номинальный напор:</b> 35 м</li>
+          <li><b>Мощность:</b> ~750 Вт</li>
+          <li><b>Диаметр корпуса:</b> 3″</li>
+          <li><b>Выход:</b> 1¼″</li>
+        </ul>
+
+        <div class="qty">
+          <button type="button" id="minus" aria-label="Уменьшить">−</button>
+          <input id="qty" type="number" value="1" min="1"/>
+          <button type="button" id="plus" aria-label="Увеличить">+</button>
+        </div>
+        <button id="add" class="btn primary">Добавить в корзину</button>
+      </div>
+    </section>
+
+    <!-- ВКЛАДКИ -->
+    <section class="tabs" id="tabs">
+      <div class="tab-head">
+        <button class="active" id="th1">Описание</button>
+        <button id="th2">Характеристики</button>
+        <button id="th3">Отзывы</button>
+        <button id="th5">Подбор насоса</button>
+      </div>
+
+      <div class="tab-body" id="tabBody">
+        <!-- Описание -->
+        <div id="tab1">
+          <p><b>Grundfos SQ 1-35</b> — компактный 3-дюймовый насос для скважин и кессонов, рассчитанный на ежедневную работу в бытовых системах водоснабжения. Электроника обеспечивает мягкий пуск, защиту от «сухого хода», перегрева и перепадов напряжения. Благодаря корпусу из нержавеющей стали и высокому качеству рабочих органов насос демонстрирует стабильные характеристики и длительный ресурс.</p>
+          <ul>
+            <li><b>Рабочая точка</b>: ≈16,7 л/мин при 35 м — комфортное давление для дома, бани и полива.</li>
+            <li><b>Мягкий пуск</b>: снижает пусковые токи и гидроудары, бережёт сеть и арматуру.</li>
+            <li><b>Защиты</b>: сухой ход, перегрев, перегрузка и автоматический перезапуск.</li>
+            <li><b>Монтаж</b>: подходит для узких обсадных труб <b>3″</b>, сборка и обслуживание максимально простые.</li>
+          </ul>
+          <p>Если нужен надёжный «домашний» источник воды без сюрпризов — <b>SQ 1-35</b> закрывает задачу: поддерживает стабильное давление, тих в работе и энергоэффективен.</p>
+        </div>
+
+        <!-- Характеристики -->
+        <div id="tab2" hidden>
+          <table class="spec-table">
+            <tr><th>Производитель</th><td>Grundfos</td></tr>
+            <tr><th>Модель</th><td>SQ 1-35</td></tr>
+            <tr><th>Артикул</th><td>96510178</td></tr>
+            <tr><th>Номинальная подача</th><td>1 м³/ч (≈ 16,7 л/мин)</td></tr>
+            <tr><th>Номинальный напор</th><td>35 м</td></tr>
+            <tr><th>Макс. глубина установки</th><td>до 150 м</td></tr>
+            <tr><th>Мощность</th><td>~750 Вт</td></tr>
+            <tr><th>Напряжение питания</th><td>1~ 220–240 В, 50/60 Гц</td></tr>
+            <tr><th>Диаметр корпуса</th><td>3″</td></tr>
+            <tr><th>Выходной патрубок</th><td>1¼″</td></tr>
+            <tr><th>Материал корпуса</th><td>Нержавеющая сталь</td></tr>
+            <tr><th>Качество воды</th><td>Чистая вода без абразива</td></tr>
+            <tr><th>Температура жидкости</th><td>+2…+35 °C</td></tr>
+            <tr><th>Защиты</th><td>сухой ход, перегрев, перегрузка, перепады напряжения</td></tr>
+            <tr><th>Запуск</th><td>Плавный («мягкий пуск»)</td></tr>
+            <tr><th>Гарантия</th><td>12 месяцев</td></tr>
+          </table>
+        </div>
+
+        <!-- Отзывы -->
+        <div id="tab3" hidden>
+          <h3 id="reviews">Отзывы покупателей</h3>
+          <div class="review-section" id="reviewList">
+            <div class="review-card"><div class="review-avatar">ИП</div><div class="review-bubble"><div class="review-stars">★★★★★</div>Установил прошлым летом — работает тихо и уверенно. 👍</div></div>
+            <div class="review-card"><div class="review-avatar">МС</div><div class="review-bubble"><div class="review-stars">★★★★★</div>Мягкий пуск — красота, нет рывков в системе. 😊</div></div>
+            <div class="review-card"><div class="review-avatar">АД</div><div class="review-bubble"><div class="review-stars">★★★★★</div>3″ корпус спас — вошёл в узкую обсадную трубу без проблем.</div></div>
+            <div class="review-card"><div class="review-avatar">ГК</div><div class="review-bubble"><div class="review-stars">★★★★★</div>Для дачи идеально: дом + полив, давление стабильное. 💧</div></div>
+            <div class="review-card"><div class="review-avatar">СЛ</div><div class="review-bubble"><div class="review-stars">★★★★★</div>Защита от сухого хода уже выручала, рекомендую. ✅</div></div>
+            <div class="review-card"><div class="review-avatar">АР</div><div class="review-bubble"><div class="review-stars">★★★★★</div>Монтаж занял пару часов, всё интуитивно и понятно.</div></div>
+            <div class="review-card"><div class="review-avatar">ДТ</div><div class="review-bubble"><div class="review-stars">★★★★★</div>Напор соответствует паспорту, работает тихо. 🙌</div></div>
+            <div class="review-card"><div class="review-avatar">ОМ</div><div class="review-bubble"><div class="review-stars">★★★★★</div>Материалы отличные, сталь не цветёт, вид добротный.</div></div>
+            <div class="review-card"><div class="review-avatar">ЕВ</div><div class="review-bubble"><div class="review-stars">★★★★★</div>Консультация помогла выбрать — спасибо за сервис! 🙂</div></div>
+            <div class="review-card"><div class="review-avatar">ПН</div><div class="review-bubble"><div class="review-stars">★★★★★</div>Цена/ресурс устраивают. Берите — не пожалеете. 💯</div></div>
+          </div>
+
+          <!-- Форма нового отзыва -->
+          <div class="review-form" id="reviewForm">
+            <h4>Оставить отзыв</h4>
+            <div class="form-row">
+              <label>Ваша оценка:
+                <div class="stars always-yellow" id="formStars">
+                  <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+                </div>
+              </label>
+            </div>
+            <div class="form-row">
+              <label>Ваш отзыв:
+                <textarea id="reviewText" placeholder="Поделитесь опытом эксплуатации…"></textarea>
+              </label>
+            </div>
+            <button id="submitReview" class="btn primary">Отправить отзыв</button>
+          </div>
+        </div>
+
+        <!-- Подбор насоса -->
+        <div id="tab5" hidden>
+          <section class="calc-premium">
+            <form id="calcForm" class="calc-form-premium">
+              <div class="row">
+                <label>Тип объекта
+                  <select id="objType">
+                    <option>Дом</option>
+                    <option>Дача</option>
+                    <option>Промышленный</option>
+                  </select>
+                </label>
+                <label>Глубина скважины (м)
+                  <input id="depth" type="number" value="30" min="1">
+                </label>
+              </div>
+
+              <div class="row">
+                <label>Необходимый расход (л/мин)
+                  <input id="flow" type="number" value="15" min="1">
+                </label>
+                <label>Высота до точки (м)
+                  <input id="height" type="number" value="5" min="0">
+                </label>
+              </div>
+
+              <p class="note">💡 Обычно 10–15 л/мин для дома, 8–12 л/мин для дачи. Потери — 20–35%.</p>
+
+              <div class="actions">
+                <button id="calcBtn" type="button" class="btn primary">Рассчитать</button>
+                <div id="calcResult" class="result"></div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- АЛЬТЕРНАТИВЫ -->
+    <section class="alt">
+      <h3>Альтернативные товары</h3>
+      <div class="alt-grid">
+        <article class="alt-card">
+          <img src="PKm60.jpeg" alt="PEDROLLO PKm60">
+          <h4>PEDROLLO PKm60</h4>
+          <ul>
+            <li>Поверхностный насос, для чистой воды</li>
+            <li>Подача до 40 л/мин, напор до 38 м</li>
+            <li>Подходит для полива и бытового водоснабжения</li>
+          </ul>
+          <div class="p">14 900 ₽</div>
+          <button class="btn primary" data-alt="PEDROLLO PKm60">Добавить</button>
+        </article>
+
+        <article class="alt-card">
+          <img src="SUMOTO.jpg" alt="SUMOTO QGD 1.2-50-0.75">
+          <h4>SUMOTO QGD 1.2-50-0.75</h4>
+          <ul>
+            <li>Скважинный, диаметр 3″</li>
+            <li>1.2 м³/ч, напор до 50 м</li>
+            <li>Универсален для дома и полива</li>
+          </ul>
+          <div class="p">27 400 ₽</div>
+          <button class="btn primary" data-alt="SUMOTO QGD 1.2-50-0.75">Добавить</button>
+        </article>
+
+        <article class="alt-card">
+          <img src="PANELLI.jpg" alt="PANELLI ECO 3-60">
+          <h4>PANELLI ECO 3-60</h4>
+          <ul>
+            <li>Скважинный 3″, усиленный напор</li>
+            <li>Подача 1 м³/ч, напор до 60 м</li>
+            <li>Нержавеющий корпус, экономичный</li>
+          </ul>
+          <div class="p">31 700 ₽</div>
+          <button class="btn primary" data-alt="PANELLI ECO 3-60">Добавить</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- ДОСТАВКА -->
+    <section class="delivery">
+      <h3>Доставка и получение</h3>
+      <div class="delivery-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+        <div class="d-card" style="background:var(--panel);border:2px solid #cbd5e1;border-radius:12px;box-shadow:var(--shadow);padding:18px">
+          <div class="badge-line" style="display:flex;gap:8px;align-items:center">🚚 <b>Доставка по Москве</b></div>
+          <ul class="d-list" style="margin:6px 0 0 18px">
+            <li>В пределах МКАД — от 1000 ₽, бесплатно при заказе от 30 000 ₽.</li>
+            <li>Срок: в день заказа или после поступления товара на склад.</li>
+            <li>Подъём на этаж — по согласованию с менеджером.</li>
+          </ul>
+        </div>
+        <div class="d-card" style="background:var(--panel);border:2px solid #cbd5e1;border-radius:12px;box-shadow:var(--shadow);padding:18px">
+          <div class="badge-line" style="display:flex;gap:8px;align-items:center">🚛 <b>Доставка по регионам</b></div>
+          <ul class="d-list" style="margin:6px 0 0 18px">
+            <li>Отправка ТК: ПЭК, СДЭК, Деловые Линии.</li>
+            <li>До терминала бесплатно, до двери — по тарифу ТК.</li>
+          </ul>
+        </div>
+        <div class="d-card" style="background:var(--panel);border:2px solid #cbd5e1;border-radius:12px;box-shadow:var(--shadow);padding:18px">
+          <div class="badge-line" style="display:flex;gap:8px;align-items:center">📦 <b>Самовывоз</b></div>
+          <ul class="d-list" style="margin:6px 0 0 18px">
+            <li>Склад в Москве, резерв 24 ч.</li>
+            <li>Выдача: будни 10–17, сб–вс 10–16.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Модалка «добавлено в корзину» -->
+  <div class="modal" id="modal">
+    <div class="box">
+      <h3>Товар добавлен в корзину</h3>
+      <p id="modal-text"></p>
+      <div class="row">
+        <button class="btn secondary" id="continue">Продолжить покупки</button>
+        <button class="btn primary" id="go-cart">Перейти в корзину</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модалка фото -->
+  <div class="modal-photo" id="photoModal">
+    <span class="close" id="closePhoto">×</span>
+    <span class="nav prev" id="mPrev">❮</span>
+    <img id="modalImg" alt="Фото товара">
+    <span class="nav next" id="mNext">❯</span>
+    <div class="counter" id="photoCounter"></div>
+  </div>
+
+  <footer class="container">
+    © Интернет-магазин насосного оборудования — продажа насосов и комплектующих для систем водоснабжения и обустройства скважин, а также услуги по монтажу, обслуживанию водонапорных башен и ёмкостей, бурению скважин.
+  </footer>
+
+<script>
+/* ===== Тема ===== */
+document.getElementById('themeToggle').onclick=()=>{ 
+  document.body.classList.toggle('dark'); 
+  // Перестроить графики под тему (цвета/свечение)
+  if (typeof buildCharts === 'function') buildCharts();
+};
+
+/* ===== Количество ===== */
+const qtyInput=document.getElementById('qty')||{value:1};
+const minusBtn=document.getElementById('minus'),plusBtn=document.getElementById('plus');
+if(minusBtn){minusBtn.onclick=()=>{qtyInput.value=Math.max(1,(+qtyInput.value||1)-1);};}
+if(plusBtn){plusBtn.onclick=()=>{qtyInput.value=(+qtyInput.value||1)+1;};}
+
+/* ===== Табы ===== */
+const tabBtns=[...document.querySelectorAll('.tab-head button')];
+const tabPanels=[...document.querySelectorAll('.tab-body > div')];
+const tabBody=document.getElementById('tabBody');
+
+function setTab(i){
+  tabBtns.forEach(x=>x.classList.remove('active'));
+  tabPanels.forEach(x=>x.hidden=true);
+  tabBtns[i].classList.add('active');
+  tabPanels[i].hidden=false;
+  if(i===3){ tabBody.classList.add('minimal'); } else { tabBody.classList.remove('minimal'); }
+}
+tabBtns.forEach((b,i)=>b.addEventListener('click',()=>setTab(i)));
+setTab(0);
+
+/* ===== Прокрутка к отзывам ===== */
+const rv=document.getElementById('gotoReviews'); 
+if(rv){rv.onclick=(e)=>{e.preventDefault();setTab(2);document.getElementById('tabs').scrollIntoView({behavior:'smooth'});};}
+
+/* ===== Модалка добавления ===== */
+const modal=document.getElementById('modal'),modalText=document.getElementById('modal-text');
+const addBtn=document.getElementById('add');
+if(addBtn){addBtn.onclick=()=>{modalText.innerHTML=`Товар <b>Grundfos SQ 1-35</b> (${qtyInput.value} шт.) добавлен.`;modal.classList.add('show');};}
+document.getElementById('continue').onclick=()=>modal.classList.remove('show');
+document.getElementById('go-cart').onclick=()=>{modal.classList.remove('show');alert('Переход в корзину (демо)');};
+modal.onclick=e=>{if(e.target===modal)modal.classList.remove('show');};
+
+/* ===== Галерея ===== */
+const galleryImgs=["GRUNDFOS.jpeg","GRUNDFOS(2).jpg"];
+const mainImg=document.getElementById('mainImg');
+const thumbs=[...document.querySelectorAll('#thumbRow .thumb')];
+const galleryEl=document.getElementById('gallery');
+let currentIndex=0;
+function setMainByIndex(i){currentIndex=(i+galleryImgs.length)%galleryImgs.length;mainImg.src=galleryImgs[currentIndex];thumbs.forEach((t,j)=>t.classList.toggle('active',j===currentIndex));}
+thumbs.forEach((t,i)=>t.addEventListener('click',()=>setMainByIndex(i)));
+document.getElementById('gPrev').onclick=()=>setMainByIndex(currentIndex-1);
+document.getElementById('gNext').onclick=()=>setMainByIndex(currentIndex+1);
+let autoSlide=setInterval(()=>setMainByIndex(currentIndex+1),5000);
+galleryEl.addEventListener('mouseenter',()=>clearInterval(autoSlide));
+galleryEl.addEventListener('mouseleave',()=>autoSlide=setInterval(()=>setMainByIndex(currentIndex+1),5000));
+let startX=null;
+galleryEl.addEventListener('touchstart',(e)=>{startX=e.changedTouches[0].clientX;},{passive:true});
+galleryEl.addEventListener('touchend',(e)=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>40){dx<0?setMainByIndex(currentIndex+1):setMainByIndex(currentIndex-1);}startX=null;},{passive:true});
+/* Фото-модалка */
+const photoModal=document.getElementById('photoModal'), modalImg=document.getElementById('modalImg');
+document.getElementById('mPrev').onclick=()=>showModal(-1);
+document.getElementById('mNext').onclick=()=>showModal(+1);
+document.getElementById('closePhoto').onclick=()=>photoModal.style.display='none';
+document.getElementById('photoCounter').textContent=`1/${galleryImgs.length}`;
+function openPhotoModal(i=0){ currentIndex=i; updateModal(); photoModal.style.display='flex'; }
+function updateModal(){ modalImg.src=galleryImgs[currentIndex]; document.getElementById('photoCounter').textContent=`${currentIndex+1}/${galleryImgs.length}`; }
+function showModal(delta){ currentIndex=(currentIndex+delta+galleryImgs.length)%galleryImgs.length; updateModal(); }
+mainImg.addEventListener('click',()=>openPhotoModal(currentIndex));
+photoModal.addEventListener('click',(e)=>{ if(e.target===photoModal) photoModal.style.display='none'; });
+document.addEventListener('keydown',e=>{
+  if(photoModal.style.display==='flex'){
+    if(e.key==='ArrowLeft') showModal(-1);
+    if(e.key==='ArrowRight') showModal(+1);
+    if(e.key==='Escape') photoModal.style.display='none';
+  } else {
+    if(e.key==='ArrowLeft') setMainByIndex(currentIndex-1);
+    if(e.key==='ArrowRight') setMainByIndex(currentIndex+1);
+  }
+});
+
+/* ===== Рейтинг и отзывы ===== */
+const productStarsEl=document.getElementById('starContainer');
+const ratingValueEl=document.getElementById('ratingValue');
+let ratings=[5,5,5,5,5,5,5,5,5,5];
+function avg(arr){return arr.reduce((a,b)=>a+b,0)/arr.length;}
+function renderProductAverage(){
+  const a=avg(ratings);
+  ratingValueEl.innerHTML = `<b>${a.toFixed(1)}</b> • <a id="gotoReviewsLink" href="#reviews">${ratings.length} отзывов</a>`;
+  document.getElementById('gotoReviewsLink').onclick=(e)=>{e.preventDefault();setTab(2);document.getElementById('tabs').scrollIntoView({behavior:'smooth'});};
+}
+renderProductAverage();
+(function initStarHover(containerEl){
+  const spans=[...containerEl.querySelectorAll('span[data-value]')];
+  let current=0;
+  spans.forEach(sp=>{
+    const val=+sp.getAttribute('data-value');
+    sp.addEventListener('mousemove',()=>{spans.forEach(s=>s.style.opacity=(+s.dataset.value<=val)?'1':'0.3');});
+    sp.addEventListener('mouseout',()=>{spans.forEach(s=>s.style.opacity=(+s.dataset.value<=current||current===0)?'1':'0.3');});
+    sp.addEventListener('click',()=>{current=val; ratingValueEl.querySelector('b').textContent=val.toFixed(1);});
+  });
+  spans.forEach(s=>s.style.opacity='1');
+})(productStarsEl);
+const formStars=document.getElementById('formStars'); let formStarsValue=0;
+(function initFormStars(){
+  const spans=[...formStars.querySelectorAll('span[data-value]')];
+  spans.forEach(sp=>{
+    const v=+sp.dataset.value;
+    sp.addEventListener('mousemove',()=>{spans.forEach(s=>s.style.opacity=(+s.dataset.value<=v)?'1':'0.3');});
+    sp.addEventListener('mouseout',()=>{spans.forEach(s=>s.style.opacity=(+s.dataset.value<=formStarsValue||formStarsValue===0)?'1':'0.3');});
+    sp.addEventListener('click',()=>{formStarsValue=v;});
+  });
+  spans.forEach(s=>s.style.opacity='1');
+})();
+document.getElementById('submitReview').onclick=()=>{
+  const val=formStarsValue;
+  const txt=document.getElementById('reviewText').value.trim();
+  if(!val||!txt){alert('Пожалуйста, выберите оценку и напишите отзыв.');return;}
+  const list=document.getElementById('reviewList');
+  const card=document.createElement('div');card.className='review-card';
+  const avatar=document.createElement('div');avatar.className='review-avatar';
+  const initial=(txt.match(/[А-ЯA-ZЁ]/u)||['Г'])[0];avatar.textContent=initial;
+  const bubble=document.createElement('div');bubble.className='review-bubble';
+  const starsDiv=document.createElement('div');starsDiv.className='review-stars';starsDiv.textContent='★'.repeat(val)+'☆'.repeat(5-val);
+  const p=document.createElement('p');p.textContent=txt;
+  bubble.appendChild(starsDiv);bubble.appendChild(p);
+  card.appendChild(avatar);card.appendChild(bubble);
+  list.appendChild(card);
+  ratings.push(val); renderProductAverage();
+  document.getElementById('reviewText').value=''; formStarsValue=0;
+  alert('Ваш отзыв добавлен. Спасибо!');
+};
+document.querySelectorAll('.alt-card .btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const name=b.getAttribute('data-alt')||'Товар';
+    document.getElementById('modal-text').innerHTML=`Товар <b>${name}</b> добавлен в корзину.`;
+    document.getElementById('modal').classList.add('show');
+  });
+});
+
+/* ======== ГРАФИК (логика и стили из твоего понравившегося варианта) ======== */
+const base={Q:[0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6],
+  H:[46,44.5,42,39.5,36.5,32,28.5,23.5,14],
+  ETA:[0,8,16,24,29,31,31,28,22],
+  P2:[255,275,288,296,300,300,295,285,270],
+  NPSH:[0.5,0.8,1.2,1.8,2.6,3.5,4.5,5.3,6.2]};
+const hz60={Q:base.Q.slice(), H:base.H.map(v=>v*1.20), ETA:base.ETA.map(v=>v*1.05),
+  P2:base.P2.map(v=>v*1.17), NPSH:base.NPSH.slice()};
+let freq=50, dataset={...base};
+const BEP_INDEX=base.ETA.indexOf(Math.max(...base.ETA));
+let selectedIndex=+localStorage.getItem('sq1_35_index')||BEP_INDEX;
+let unitIsLph=false;
+
+const tipTop=document.createElement('div'),tipBot=document.createElement('div');
+tipTop.className='tooltip';tipBot.className='tooltip';
+document.getElementById('cardTop').appendChild(tipTop);
+document.getElementById('cardBottom').appendChild(tipBot);
+
+const bepLbl=document.createElement('div');
+bepLbl.className='bepLabel';
+bepLbl.textContent='BEP —\nТочка наилучшей\nэффективности';
+document.getElementById('cardTop').appendChild(bepLbl);
+
+Chart.defaults.elements.line.tension=.35;
+Chart.defaults.plugins.legend.labels.usePointStyle=true;
+
+function axisLabel(){return unitIsLph?'Q (л/ч)':'Q (м³/ч)';}
+function tickFormatter(v){return unitIsLph?(v*1000).toFixed(0):v.toFixed(1);}
+function fmtQ(q){return unitIsLph?`${(q*1000).toFixed(0)} л/ч`:`${q.toFixed(2)} м³/ч`;}
+
+/* Вертикальная/горизонтальная линия-куратор + позиционирование BEP label */
+function cursorLinesPlugin(which){
+  return { id:'cursorLines_'+which, afterDraw(chart){
+    const {scales,ctx,chartArea}=chart;
+    const x = scales.x.getPixelForValue(dataset.Q[selectedIndex]);
+    ctx.save(); ctx.beginPath(); ctx.moveTo(x, chartArea.top); ctx.lineTo(x, chartArea.bottom);
+    ctx.lineWidth=2; ctx.strokeStyle = document.body.classList.contains('dark') ? '#60a5fa' : '#2563eb';
+    ctx.shadowBlur=8; ctx.shadowColor=ctx.strokeStyle; ctx.stroke(); ctx.restore();
+
+    if(which==='top'){
+      const y = scales.yH.getPixelForValue(dataset.H[selectedIndex]);
+      ctx.save(); ctx.beginPath(); ctx.moveTo(chartArea.left,y); ctx.lineTo(chartArea.right,y);
+      ctx.lineWidth=2; ctx.setLineDash([6,4]);
+      ctx.strokeStyle = document.body.classList.contains('dark') ? '#60a5fa' : '#2563eb';
+      ctx.stroke(); ctx.restore();
+
+      const xB=scales.x.getPixelForValue(base.Q[BEP_INDEX]);
+      const yB=scales.yEta.getPixelForValue(dataset.ETA[BEP_INDEX]);
+      const clampX=Math.min(Math.max(xB,chartArea.left),chartArea.right);
+      const clampY=Math.min(Math.max(yB,chartArea.top),chartArea.bottom);
+      bepLbl.style.left = `${clampX}px`;
+      bepLbl.style.top  = `${clampY+28}px`;
+    }
+  }};
+}
+
+let chartTop,chartBottom;
+function buildCharts(){
+  if(chartTop){chartTop.destroy(); chartBottom.destroy();}
+
+  chartTop=new Chart(document.getElementById('chartTop'),{
+    type:'line',
+    data:{datasets:[
+      {
+        label:'H, м',
+        data:dataset.Q.map((q,i)=>({x:q,y:dataset.H[i]})),
+        borderWidth:2.6, tension:.35,
+        borderColor: document.body.classList.contains('dark') ? '#60a5fa' : '#2563eb',
+        backgroundColor: document.body.classList.contains('dark') ? 'rgba(96,165,250,0.08)' : 'rgba(37,99,235,0.1)',
+        pointRadius:6,
+        pointBackgroundColor:dataset.Q.map((_,i)=>
+          i===BEP_INDEX
+            ? (document.body.classList.contains('dark') ? '#34d399' : '#10b981')
+            : (document.body.classList.contains('dark') ? '#60a5fa' : '#2563eb')
+        ),
+        yAxisID:'yH',
+        borderJoinStyle:'round'
+      },
+      {
+        label:'η, %',
+        data:dataset.Q.map((q,i)=>({x:q,y:dataset.ETA[i]})),
+        borderWidth:2.2, tension:.35, borderDash:[4,3],
+        borderColor: document.body.classList.contains('dark') ? '#a78bfa' : '#7c3aed',
+        backgroundColor: document.body.classList.contains('dark') ? 'rgba(167,139,250,0.15)' : 'rgba(124,58,237,0.1)',
+        pointRadius:5,
+        pointBackgroundColor: document.body.classList.contains('dark') ? '#a78bfa' : '#7c3aed',
+        yAxisID:'yEta'
+      }
+    ]},
+    options:{
+      responsive:true, parsing:false, animation:{duration:600, easing:'easeOutQuart'},
+      plugins:{legend:{position:'top'}, tooltip:{enabled:false}},
+      scales:{
+        x:{type:'linear', min:0, max:1.6, title:{display:true, text:axisLabel()}, ticks:{callback:tickFormatter}},
+        yH:{title:{display:true,text:'H (м)'}, min:0, max:60},
+        yEta:{position:'right', title:{display:true,text:'η (%)'}, min:0, max:55, grid:{drawOnChartArea:false}}
+      }
+    },
+    plugins:[cursorLinesPlugin('top')]
+  });
+
+  chartBottom=new Chart(document.getElementById('chartBottom'),{
+    type:'line',
+    data:{datasets:[
+      {
+        label:'P₂, Вт',
+        data:dataset.Q.map((q,i)=>({x:q,y:dataset.P2[i]})),
+        borderWidth:2.6, tension:.35,
+        borderColor: document.body.classList.contains('dark') ? '#22d3ee' : '#14b8a6',
+        backgroundColor: document.body.classList.contains('dark') ? 'rgba(34,211,238,0.12)' : 'rgba(20,184,166,0.1)',
+        pointRadius:5, pointHoverRadius:7,
+        pointBackgroundColor: document.body.classList.contains('dark') ? '#22d3ee' : '#14b8a6',
+        pointBorderColor:'transparent',
+        borderJoinStyle:'round',
+        yAxisID:'yP2'
+      },
+      {
+        label:'NPSH, м',
+        data:dataset.Q.map((q,i)=>({x:q,y:dataset.NPSH[i]})),
+        borderWidth:2.2, tension:.35, borderDash:[4,3],
+        borderColor: document.body.classList.contains('dark') ? '#60a5fa' : '#2563eb',
+        backgroundColor: document.body.classList.contains('dark') ? 'rgba(96,165,250,0.12)' : 'rgba(37,99,235,0.1)',
+        pointRadius:4, pointHoverRadius:6,
+        pointBackgroundColor: document.body.classList.contains('dark') ? '#60a5fa' : '#2563eb',
+        pointBorderColor:'transparent',
+        yAxisID:'yNPSH'
+      }
+    ]},
+    options:{
+      responsive:true, parsing:false, animation:{duration:600,easing:'easeOutQuart'},
+      plugins:{legend:{position:'top'}, tooltip:{enabled:false}},
+      scales:{
+        x:{type:'linear', min:0, max:1.6, title:{display:true, text:axisLabel()}, ticks:{callback:tickFormatter}, grid:{color:'rgba(148,163,184,0.2)'}},
+        yP2:{title:{display:true, text:'P₂ (Вт)'}, min:0, max:1200, grid:{color:'rgba(148,163,184,0.2)'}},
+        yNPSH:{position:'right', title:{display:true, text:'NPSH (м)'}, min:0, max:10, grid:{drawOnChartArea:false}}
+      }
+    },
+    plugins:[cursorLinesPlugin('bottom')]
+  });
+
+  // Доб. классы для свечения (только в тёмной теме)
+  if (document.body.classList.contains('dark')) {
+    setTimeout(()=>{
+      document.querySelectorAll('canvas').forEach(cv=>{
+        const paths = cv.parentNode.querySelectorAll('path');
+        paths.forEach(p=>{
+          const stroke = p.getAttribute('stroke')||'';
+          if (stroke.includes('60a5fa') || stroke.includes('2563eb')) p.classList.add('chart-line-h');
+          if (stroke.includes('22d3ee') || stroke.includes('14b8a6')) p.classList.add('chart-line-p2');
+          if (stroke.includes('a78bfa') || stroke.includes('7c3aed')) p.classList.add('chart-line-eta');
+        });
+      });
+    },0);
+  }
+
+  attachClick(document.getElementById('cardTop'), chartTop, 'top');
+  attachClick(document.getElementById('cardBottom'), chartBottom, 'bot');
+  updateHUD();
+}
+
+/* Tooltip и позиционирование в пределах области */
+let active={which:null,index:null};
+function placeTooltipInArea(chart,tip,px,py){
+  const area=chart.chartArea;
+  const TIP_W=270,TIP_H=130;
+  let left=px+20, top=py-TIP_H/2;
+  if(top<area.top+8)top=area.top+8;
+  if(top+TIP_H>area.bottom-8)top=area.bottom-TIP_H-8;
+  if(left+TIP_W>area.right-8)left=px-20-TIP_W;
+  if(left<area.left+8)left=area.left+8;
+  tip.style.left=`${left}px`;tip.style.top=`${top}px`;
+}
+
+function showTooltip(chart, which, i) {
+  const px = chart.scales.x.getPixelForValue(dataset.Q[i]);
+  const py =
+    which === "top"
+      ? chart.scales.yH.getPixelForValue(dataset.H[i])
+      : chart.scales.yP2.getPixelForValue(dataset.P2[i]);
+  const tip = which === "top" ? tipTop : tipBot;
+
+  if (which === "top") {
+    tip.innerHTML = `
+      <strong><div class="dot"></div> Гидравлические характеристики</strong>
+      <div>💧 Расход Q: <b>${fmtQ(dataset.Q[i])}</b></div>
+      <div>⚙️ Напор H: <b>${dataset.H[i].toFixed(1)} м</b></div>
+      <div>📈 КПД η: <b>${dataset.ETA[i].toFixed(0)} %</b></div>`;
+  } else {
+    const pNow = dataset.P2[i],
+      pMax = Math.max(...dataset.P2);
+    const loadPct = Math.round((pNow / pMax) * 100);
+    tip.innerHTML = `
+      <strong><div class="dot"></div> Энергетические характеристики</strong>
+      <div>⚡ P₂: <b>${pNow.toFixed(0)} Вт</b></div>
+      <div>🌊 NPSH: <b>${dataset.NPSH[i].toFixed(1)} м</b></div>
+      <div>🔋 Нагрузка насоса: <b>${loadPct}%</b></div>
+      <div class="loadbar"><i style="width:${loadPct}%"></i></div>`;
+  }
+
+  placeTooltipInArea(chart, tip, px, py);
+  tip.classList.add("visible");
+
+  // скрываем BEP, если tooltip активен
+  if (which === "top") bepLbl.classList.add("hidden");
+  active = { which, index: i };
+}
+
+function hideAllTooltips(){
+  tipTop.classList.remove('visible');
+  tipBot.classList.remove('visible');
+  active = { which:null, index:null };
+  bepLbl.classList.remove('hidden'); // показываем BEP обратно при закрытии тултипов
+}
+
+/* Клик по карточкам графиков:
+   — выбираем точку
+   — показываем tooltip
+   — HUD обновляется
+   — на ВЕРХНЕМ графике ещё и переключаем видимость BEP-ярлыка (как просил) */
+function attachClick(cardEl,chart,which){
+  cardEl.addEventListener('click',(e)=>{
+    const pts=chart.getElementsAtEventForMode(e,'nearest',{intersect:true},false);
+    if(!pts.length){ hideAllTooltips(); return; }
+    const i=pts[0].index;
+    if(active.which===which && active.index===i){ hideAllTooltips(); return; }
+    selectedIndex=i; localStorage.setItem('sq1_35_index',i);
+    showTooltip(chart,which,i);
+    updateHUD();
+    if(which==='top'){
+  bepLbl.classList.add('hidden'); // прячем BEP при клике на точку
+}
+  });
+}
+document.addEventListener('click',(e)=>{ if(!e.target.closest('.card')) hideAllTooltips(); });
+
+/* Кнопки графика */
+document.getElementById('btn50').onclick=()=>{freq=50;dataset={...base};
+  document.getElementById('btn50').classList.add('active');
+  document.getElementById('btn60').classList.remove('active'); buildCharts();};
+document.getElementById('btn60').onclick=()=>{freq=60;dataset={...hz60};
+  document.getElementById('btn60').classList.add('active');
+  document.getElementById('btn50').classList.remove('active'); buildCharts();};
+document.getElementById('unitBtn').onclick=()=>{unitIsLph=!unitIsLph;
+  document.getElementById('unitBtn').textContent=unitIsLph?'единицы: л/ч':'единицы: м³/ч';
+  buildCharts();};
+document.getElementById('resetBtn').onclick=()=>{selectedIndex=BEP_INDEX;localStorage.removeItem('sq1_35_index');hideAllTooltips();bepLbl.classList.remove('hidden');buildCharts();};
+
+/* HUD */
+function updateHUD(){
+  const i=selectedIndex;
+  const loadPct=Math.round(dataset.P2[i]/Math.max(...dataset.P2)*100);
+  document.getElementById('hud').innerHTML=`
+    <div class="chip">💧 <strong>Q</strong> = ${fmtQ(dataset.Q[i])}</div>
+    <div class="chip">⚙️ <strong>H</strong> = ${dataset.H[i].toFixed(1)} м</div>
+    <div class="chip">📈 <strong>η</strong> = ${dataset.ETA[i].toFixed(0)} %</div>
+    <div class="chip">⚡ <strong>P₂</strong> = ${dataset.P2[i].toFixed(0)} Вт</div>
+    <div class="chip">🔋 <strong>Нагрузка</strong> = ${loadPct}%</div>
+    <div class="chip">⏱ <strong>Частота</strong> : ${freq} Гц</div>`;
+}
+buildCharts();
+
+/* ===== КАЛЬКУЛЯТОР — логика подбора ===== */
+const calcBtn=document.getElementById('calcBtn');
+const calcRes=document.getElementById('calcResult');
+function lossesByType(type){
+  switch(type){
+    case 'Дом': return 0.3;
+    case 'Промышленный': return 0.35;
+    default: return 0.2; // Дача
+  }
+}
+calcBtn.onclick=()=>{
+  const type=document.getElementById('objType').value;
+  const depth=parseFloat(document.getElementById('depth').value)||0;
+  const flow=parseFloat(document.getElementById('flow').value)||0;
+  const height=parseFloat(document.getElementById('height').value)||0;
+
+  const k=lossesByType(type);
+  const losses=(depth+height)*k;
+  const Hreq=depth+height+losses;
+  const qreq=flow/1000*60; // л/мин -> м³/ч
+
+  let rec='';
+  if(Hreq<=40 && qreq<=1.2){
+    rec='✅ Grundfos SQ 1-35 подходит идеально по параметрам.';
+  }else if(Hreq<=60 && qreq<=1.5){
+    rec='⚙️ Рассмотрите Grundfos SQ 2-55 или аналог с большим напором.';
+  }else{
+    rec='❗ Требуется более производительный насос, обратитесь к инженеру.';
+  }
+
+  calcRes.innerHTML=`
+    <div>Расчётный напор: <b>${Hreq.toFixed(1)} м</b></div>
+    <div>Потери ≈ <b>${losses.toFixed(1)} м</b> (${(k*100).toFixed(0)}%)</div>
+    <div>${rec}</div>`;
+};
+</script>
+</body>
+</html>
