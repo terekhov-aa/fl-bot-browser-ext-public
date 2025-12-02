@@ -21,6 +21,7 @@
   },
   "options_page": "options.html",
   "action": {
-    "default_title": "FL.ru Parser & Uploader"
+    "default_title": "FL.ru Parser & Uploader",
+    "default_popup": "popup.html"
   }
 }
