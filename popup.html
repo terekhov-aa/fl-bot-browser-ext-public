@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FL.ru Parser</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="modal-backdrop"></div>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <header class="modal__header">
+            <div>
+                <p class="modal__eyebrow">FL.ru Parser & Uploader</p>
+                <h1 id="modal-title">Быстрый доступ</h1>
+            </div>
+            <button class="modal__close" type="button" aria-label="Закрыть окно">×</button>
+        </header>
+
+        <div class="tabs" role="tablist" aria-label="Навигация">
+            <button class="tab tab--active" type="button" role="tab" aria-selected="true" aria-controls="tab-user" id="tab-user-button" data-target="tab-user">Пользователь</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="tab-reviews" id="tab-reviews-button" data-target="tab-reviews">Отзывы</button>
+        </div>
+
+        <section id="tab-user" class="tab-content tab-content--active" role="tabpanel" aria-labelledby="tab-user-button">
+            <h2>Пользователь</h2>
+            <p>Здесь вы сможете просматривать и настраивать пользовательские данные, связанные с текущими задачами.</p>
+            <ul class="details">
+                <li>Статус авторизации</li>
+                <li>Быстрые ссылки на профиль</li>
+                <li>Краткая статистика по проектам</li>
+            </ul>
+        </section>
+
+        <section id="tab-reviews" class="tab-content" role="tabpanel" aria-labelledby="tab-reviews-button" hidden>
+            <h2>Отзывы</h2>
+            <p>Во вкладке отображаются отзывы и оценки для выбранного пользователя или проекта.</p>
+            <ul class="details">
+                <li>Общее количество отзывов</li>
+                <li>Позитивные и негативные оценки</li>
+                <li>Последние комментарии</li>
+            </ul>
+        </section>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
